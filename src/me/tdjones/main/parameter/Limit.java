@@ -1,8 +1,5 @@
 package me.tdjones.main.parameter;
 
-/**
- * Created by Tyler on 8/28/2016.
- */
 public class Limit implements Parameter{
     private int limit;
     private static final int maxResults = 200;
