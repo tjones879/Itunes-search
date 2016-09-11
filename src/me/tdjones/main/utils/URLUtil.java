@@ -17,6 +17,7 @@ public class URLUtil {
             searchURL = new URL(parameterString);
         }catch (MalformedURLException e) {
             e.printStackTrace();
+            searchURL = null;
         }
         return searchURL;
     }
@@ -27,6 +28,7 @@ public class URLUtil {
             connection = (HttpURLConnection) url.openConnection();
         } catch (IOException e){
             e.printStackTrace();
+            connection = null;
         }
         return connection;
     }
