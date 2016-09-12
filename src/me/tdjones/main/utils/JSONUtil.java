@@ -21,25 +21,4 @@ public class JSONUtil {
         List<SearchResult> searchResults = gson.fromJson(string, JSONResult.class).getSearchResults();
         return searchResults;
     }
-
-    public class SearchResultDeserializer implements JsonDeserializer<SearchResult> {
-        @Override
-        public SearchResult deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-            if(jsonElement == null){
-                return null;
-            }else {
-                String wrapperType = jsonElement.getAsJsonObject().get("wrapper").getAsString();
-                switch (wrapperType){
-                    case "track":
-                        return jsonDeserializationContext.deserialize(jsonElement, Track.class);
-                    case "artist":
-                        return jsonDeserializationContext.deserialize(jsonElement, Artist.class);
-                    case "collection":
-                        return jsonDeserializationContext.deserialize(jsonElement, Collection.class);
-                    default:
-                        return null;
-                }
-            }
-        }
-    }
 }
