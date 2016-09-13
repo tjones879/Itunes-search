@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JSONUtil {
-    public List<SearchResult> parseJSON(String string){
+    public static List<SearchResult> parseJSON(String string){
         Gson gson = new GsonBuilder().registerTypeAdapter(SearchResult.class, new SearchResultDeserializer()).create();
         List<SearchResult> searchResults = gson.fromJson(string, JSONResult.class).getSearchResults();
         return searchResults;

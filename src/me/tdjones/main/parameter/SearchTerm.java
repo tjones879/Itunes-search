@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 public class SearchTerm implements Parameter {
     private final String searchTerm;
 
-    SearchTerm (String searchTerm){
+    public SearchTerm (String searchTerm){
         try {
             this.searchTerm = URLEncoder.encode(searchTerm, StandardCharsets.UTF_8.toString());
         } catch (UnsupportedEncodingException e){

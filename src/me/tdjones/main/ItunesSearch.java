@@ -4,7 +4,7 @@ import me.tdjones.main.parameter.Attribute;
 import me.tdjones.main.parameter.Entity;
 import me.tdjones.main.parameter.Parameter;
 import me.tdjones.main.parameter.SearchTerm;
-import me.tdjones.main.results.SearchResult;
+import me.tdjones.main.result.SearchResult;
 import me.tdjones.main.utils.JSONUtil;
 import me.tdjones.main.utils.URLUtil;
 
@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,16 +24,20 @@ public class ItunesSearch {
     private List<SearchResult> searchResults;
     private List<Parameter> parameters;
 
-    public void itunesSearch(){
-        parameters = new ArrayList<>();
+    public ItunesSearch(){
+        parameters = new ArrayList<Parameter>();
     }
 
     public List<SearchResult> search(){
-        searchResults = new ArrayList<>();
         URL searchURL = URLUtil.buildSearchURL(appendSearchParameters());
         HttpURLConnection connection = URLUtil.openConnection(searchURL);
-        String string = convertStreamToString(connection.getInputStream());
-        searchResults = JSONUtil.parseJSON(string);
+        try {
+            String jsonString = convertStreamToString(connection.getInputStream());
+            searchResults = JSONUtil.parseJSON(jsonString);
+        }catch (IOException e){
+            e.printStackTrace();
+            searchResults = null;
+        }
         return searchResults;
     }
 
@@ -50,8 +53,8 @@ public class ItunesSearch {
         parameters.add(entity);
     }
 
-    public void setSearchTerm(SearchTerm searchTerm){
-        this.searchTerm = searchTerm;
+    public void setSearchTerm(String searchTerm){
+        this.searchTerm = new SearchTerm (searchTerm);
     }
 
     public String getSearchTerm(){
@@ -73,10 +76,11 @@ public class ItunesSearch {
             joiner.add(parameter.createParameter());
         }
 
+        parameterString = joiner.toString();
         return parameterString;
     }
 
-    private String convertStreamToString(InputStream is){
+    private static String convertStreamToString(InputStream is){
         String line;
         StringBuilder sb = new StringBuilder();
         try(BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
@@ -88,5 +92,4 @@ public class ItunesSearch {
         }
         return sb.toString();
     }
-
 }
