@@ -1,19 +1,25 @@
 package me.tdjones.main.result.wrapper;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import me.tdjones.main.result.Kind;
 import me.tdjones.main.result.SearchResult;
 
+import java.net.URL;
+
 public class Artist extends SearchResult {
-    @Expose
-    private final String artistName;
+    @Expose private String artistName;
+    @Expose private int amgArtistId;
+    @Expose private int primaryGenreId;
+    @SerializedName("artistLinkUrl")
+    private URL artistLinkUrl;
 
     Artist(String artistName){
         this.artistName = artistName;
     }
 
     @Override
-    public String getName(){
+    public String getTitle(){
         return artistName;
     }
 

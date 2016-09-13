@@ -12,15 +12,14 @@ public abstract class SearchResult {
     protected URL artworkURL60;
     @SerializedName("artworkUrl100")
     protected URL artworkURL100;
-
     @SerializedName("kind")
     protected Kind kind;
-    @Expose
-    protected URL viewURL;
-    @Expose
-    protected boolean explicit;
+    @Expose protected int artistId;
+    @Expose protected URL viewURL;
+    @Expose protected boolean explicit;
+    @Expose protected String primaryGenreName;
 
-    public abstract String getName();
+    public abstract String getTitle();
 
     public URL getArtworkURL(){
         return artworkURL30;
@@ -36,5 +35,13 @@ public abstract class SearchResult {
 
     public boolean getExplicit(){
         return explicit;
+    }
+
+    public int getArtistId(){
+        return artistId;
+    }
+
+    public String getPrimaryGenreName(){
+        return primaryGenreName;
     }
 }
