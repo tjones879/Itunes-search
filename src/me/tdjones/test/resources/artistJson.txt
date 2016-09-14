@@ -1,0 +1,6 @@
+{
+ "resultCount":2,
+ "results": [
+{"wrapperType":"artist", "artistType":"Artist", "artistName":"Coldplay", "artistLinkUrl":"https://itunes.apple.com/us/artist/coldplay/id471744?uo=4", "artistId":471744, "amgArtistId":435023, "primaryGenreName":"Alternative", "primaryGenreId":20},
+{"wrapperType":"artist", "artistType":"Artist", "artistName":"ColdPlay Wu", "artistLinkUrl":"https://itunes.apple.com/us/artist/coldplay-wu/id920870729?uo=4", "artistId":920870729, "primaryGenreName":"Hip-Hop/Rap", "primaryGenreId":18}]
+}
