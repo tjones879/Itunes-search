@@ -1,6 +1,5 @@
 package me.tdjones.main.result;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public enum Kind {

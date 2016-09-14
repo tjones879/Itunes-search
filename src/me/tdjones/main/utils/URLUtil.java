@@ -5,11 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class URLUtil {
-
-    public static String buildSearchString(){
-        return null;
-    }
+public final class URLUtil {
 
     public static URL buildSearchURL(String parameterString) {
         URL searchURL;
