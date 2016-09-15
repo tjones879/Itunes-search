@@ -5,6 +5,7 @@ import me.tdjones.main.parameter.Entity;
 import me.tdjones.main.parameter.Parameter;
 import me.tdjones.main.parameter.SearchTerm;
 import me.tdjones.main.result.SearchResult;
+import me.tdjones.main.result.SearchResultList;
 import me.tdjones.main.utils.JSONUtil;
 import me.tdjones.main.utils.URLUtil;
 
@@ -21,7 +22,7 @@ import java.util.StringJoiner;
 public class ItunesSearch {
     private static final String searchURL = "https://itunes.apple.com/search?";
     private SearchTerm searchTerm;
-    private List<SearchResult> searchResults;
+    private SearchResultList searchResults;
     private List<Parameter> parameters;
 
     public ItunesSearch(){
